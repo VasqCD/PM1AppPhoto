@@ -1,4 +1,4 @@
-package com.example.appphoto.Config;
+package com.example.appphoto.config;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.example.appphoto.Models.PhotoModel;
+import com.example.appphoto.models.PhotoModel;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

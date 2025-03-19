@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AppPhoto</string>
+    <string name="capturar_foto">Capturar foto</string>
+    <string name="salvar_foto">Salvar foto</string>
+    <string name="ver_fotos">Ver fotos guardadas</string>
+    <string name="descripcion">Descripción</string>
+    <string name="foto_guardada">Foto guardada con éxito</string>
+    <string name="error_guardando">Error al guardar la foto</string>
+    <string name="no_hay_foto">No hay foto para guardar</string>
+    <string name="error_permisos">Se necesitan todos los permisos para capturar fotos</string>
+    <string name="no_hay_camara">No hay aplicación de cámara disponible</string>
+    <string name="descripcion_requerida">Por favor ingresa una descripción</string>
+    <string name="fotos_guardadas">Fotos Guardadas</string>
+    <string name="no_hay_fotos">No hay fotos guardadas</string>
 </resources>

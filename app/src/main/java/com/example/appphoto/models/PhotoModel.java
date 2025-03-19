@@ -1,4 +1,4 @@
-package com.example.appphoto.Models;
+package com.example.appphoto.models;
 
 public class PhotoModel {
 

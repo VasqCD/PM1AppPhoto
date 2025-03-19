@@ -5,15 +5,147 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Contenedor principal con borde -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Círculo amarillo con imagen en el centro (más grande) -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal"
+                    app:cardBackgroundColor="#FFCC33"
+                    app:cardCornerRadius="100dp">
+
+                    <ImageView
+                        android:id="@+id/ivPhoto"
+                        android:layout_width="200dp"
+                        android:layout_height="199dp"
+                        android:layout_gravity="center"
+                        android:background="@android:color/holo_orange_light"
+                        android:contentDescription="Foto del usuario"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_avatar" />
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
+
+            <!-- Campo de descripción (más alto) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Descripción"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etDescripcion"
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:layout_marginTop="12dp"
+                android:background="#4285F4"
+                android:hint="@string/descripcion"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC"
+                android:textSize="18sp" />
+
+            <!-- Botón Salvar (más abajo) -->
+            <Button
+                android:id="@+id/btnSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FFCC33"
+                android:text="Salvar"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <!-- Botones adicionales -->
+            <Button
+                android:id="@+id/btnCapturar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#E0E0E0"
+                android:text="Capturar Foto"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnVerFotos"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#E0E0E0"
+                android:text="Ver Fotos Guardadas"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botones de control en la parte inferior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/btnCapturarReal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#4285F4"
+            android:text="Capturar"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnVerFotosReal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#4285F4"
+            android:text="Ver Fotos"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

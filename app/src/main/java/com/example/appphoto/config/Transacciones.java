@@ -1,4 +1,4 @@
-package com.example.appphoto.Config;
+package com.example.appphoto.config;
 
 public class Transacciones {
     // Nombre de la base de datos
