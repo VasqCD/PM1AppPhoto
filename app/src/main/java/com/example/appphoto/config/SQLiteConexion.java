@@ -1,4 +1,4 @@
-package com.example.appphoto.Config;
+package com.example.appphoto.config;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
