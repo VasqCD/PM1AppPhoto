@@ -7,7 +7,6 @@
     android:background="#FFFFFF"
     tools:context=".controllers.PhotoListActivity">
 
-    <!-- Título de la lista -->
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="0dp"
@@ -23,7 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Lista de fotos -->
     <ListView
         android:id="@+id/listViewPhotos"
         android:layout_width="0dp"
@@ -35,7 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
-    <!-- Texto para mostrar cuando no hay fotos -->
     <TextView
         android:id="@+id/tvNoPhotos"
         android:layout_width="wrap_content"

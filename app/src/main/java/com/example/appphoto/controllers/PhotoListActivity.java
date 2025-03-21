@@ -1,6 +1,5 @@
 package com.example.appphoto.controllers;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,10 +35,8 @@ public class PhotoListActivity extends AppCompatActivity {
         adapter.setOnPhotoClickListener(photo -> {
             Log.d("PhotoListActivity", "Foto seleccionada: " + photo.getId());
 
-            Intent intent = new Intent();
-            intent.putExtra("PHOTO_ID", photo.getId());
-            setResult(RESULT_OK, intent);
-            finish();
+            PhotoDetailDialogFragment dialogFragment = PhotoDetailDialogFragment.newInstance(photo.getId());
+            dialogFragment.show(getSupportFragmentManager(), "PhotoDetailDialog");
         });
 
         listViewPhotos.setAdapter(adapter);

@@ -8,7 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <!-- Contenedor principal con borde -->
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -27,7 +26,6 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <!-- Círculo amarillo con imagen en el centro (más grande) -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +52,6 @@
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
-            <!-- Campo de descripción (más alto) -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +72,6 @@
                 android:textColorHint="#CCCCCC"
                 android:textSize="18sp" />
 
-            <!-- Botón Salvar (más abajo) -->
             <Button
                 android:id="@+id/btnSalvar"
                 android:layout_width="match_parent"
@@ -88,7 +84,6 @@
                 android:textColor="#000000"
                 android:textSize="16sp" />
 
-            <!-- Botones adicionales -->
             <Button
                 android:id="@+id/btnCapturar"
                 android:layout_width="match_parent"
@@ -115,7 +110,6 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Botones de control en la parte inferior -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
