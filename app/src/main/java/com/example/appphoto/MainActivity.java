@@ -44,10 +44,8 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap photoBitmap;
     private DatabaseHelper databaseHelper;
 
-    // Permisos necesarios
     private String[] requiredPermissions;
 
-    // ActivityResultLauncher para la cámara
     private ActivityResultLauncher<Intent> photoCaptureLauncher;
     private ActivityResultLauncher<Intent> photoSelectLauncher;
 
@@ -62,20 +60,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Inicializar vistas
         ivPhoto = findViewById(R.id.ivPhoto);
         etDescripcion = findViewById(R.id.etDescripcion);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnCapturarReal = findViewById(R.id.btnCapturarReal);
         btnVerFotosReal = findViewById(R.id.btnVerFotosReal);
 
-        // Inicializar helper de base de datos
         databaseHelper = new DatabaseHelper(this);
 
-        // Configurar permisos según versión de Android
         setupPermissions();
 
-        // Configurar launcher para selección de foto
         photoSelectLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -84,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         if (data != null) {
                             int photoId = data.getIntExtra("PHOTO_ID", -1);
                             if (photoId != -1) {
+
                                 // Cargar la foto seleccionada
                                 PhotoModel selectedPhoto = databaseHelper.obtenerFotoPorId(photoId);
                                 if (selectedPhoto != null) {
@@ -97,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        // Configurar launcher para captura de foto
         photoCaptureLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -109,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        // Configurar listeners de botones
         btnCapturarReal.setOnClickListener(v -> {
             if (checkPermissions()) {
                 dispatchTakePictureIntent();
@@ -129,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         btnVerFotosReal.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PhotoListActivity.class);
             photoSelectLauncher.launch(intent);
+            Log.d("MainActivity", "Lanzando PhotoListActivity");
         });
     }
 
@@ -196,14 +190,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            // Convertir bitmap a byte array
+            // Convertir Bitmap a byte array para guardar en la base de datos SQLite la imagen blob
             byte[] photoBytes = DatabaseHelper.getBytesFromBitmap(photoBitmap);
             
             PhotoModel photo = new PhotoModel();
             photo.setImagenBytes(photoBytes);
             photo.setDescripcion(descripcion);
-
-            // Guardar en la base de datos
             long id = databaseHelper.guardarFoto(photo);
 
             if (id > 0) {

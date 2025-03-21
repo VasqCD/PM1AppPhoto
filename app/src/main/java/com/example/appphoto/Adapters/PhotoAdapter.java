@@ -2,6 +2,7 @@ package com.example.appphoto.Adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,16 +44,18 @@ public class PhotoAdapter extends ArrayAdapter<PhotoModel> {
         ImageView ivPhoto = listItem.findViewById(R.id.ivPhoto);
         TextView tvDescripcion = listItem.findViewById(R.id.tvDescripcion);
 
-        // Convertir byte array a Bitmap
+        // convertir byte array a Bitmap para mostrar la imagen blob
         Bitmap bitmap = DatabaseHelper.getBitmapFromBytes(currentPhoto.getImagenBytes());
         ivPhoto.setImageBitmap(bitmap);
 
         tvDescripcion.setText(currentPhoto.getDescripcion());
 
-        // Añadir listener para el clic en toda la fila
         listItem.setOnClickListener(v -> {
+            Log.d("PhotoAdapter", "Elemento clicado: " + currentPhoto.getId());
             if (listener != null) {
                 listener.onPhotoClick(currentPhoto);
+            } else {
+                Log.e("PhotoAdapter", "Listener es null");
             }
         });
 

@@ -2,6 +2,7 @@ package com.example.appphoto.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,12 +32,12 @@ public class PhotoListActivity extends AppCompatActivity {
 
         loadPhotos();
 
-        // Configurar el listener para clics en fotos
         adapter.setOnPhotoClickListener(photo -> {
-            // Crear un intent para volver a MainActivity con la foto seleccionada
+            // para depurar
+            Log.d("PhotoListActivity", "Foto seleccionada: " + photo.getId());
+
             Intent intent = new Intent();
             intent.putExtra("PHOTO_ID", photo.getId());
-
             setResult(RESULT_OK, intent);
             finish();
         });
@@ -47,7 +48,6 @@ public class PhotoListActivity extends AppCompatActivity {
         adapter = new PhotoAdapter(this, photoList);
         listViewPhotos.setAdapter(adapter);
 
-        // Mostrar mensaje si no hay fotos
         TextView tvNoPhotos = findViewById(R.id.tvNoPhotos);
         if (photoList.isEmpty()) {
             tvNoPhotos.setVisibility(View.VISIBLE);
@@ -61,7 +61,6 @@ public class PhotoListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Recargar las fotos al volver a la actividad
         loadPhotos();
     }
 }
