@@ -30,10 +30,10 @@ public class PhotoListActivity extends AppCompatActivity {
         listViewPhotos = findViewById(R.id.listViewPhotos);
         databaseHelper = new DatabaseHelper(this);
 
-        loadPhotos();
+        List<PhotoModel> photoList = databaseHelper.obtenerFotos();
+        adapter = new PhotoAdapter(this, photoList);
 
         adapter.setOnPhotoClickListener(photo -> {
-            // para depurar
             Log.d("PhotoListActivity", "Foto seleccionada: " + photo.getId());
 
             Intent intent = new Intent();
@@ -41,11 +41,7 @@ public class PhotoListActivity extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             finish();
         });
-    }
 
-    private void loadPhotos() {
-        List<PhotoModel> photoList = databaseHelper.obtenerFotos();
-        adapter = new PhotoAdapter(this, photoList);
         listViewPhotos.setAdapter(adapter);
 
         TextView tvNoPhotos = findViewById(R.id.tvNoPhotos);
@@ -61,6 +57,25 @@ public class PhotoListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadPhotos();
+        updatePhotoList();
+    }
+
+    private void updatePhotoList() {
+        List<PhotoModel> photoList = databaseHelper.obtenerFotos();
+
+        if (adapter != null) {
+            adapter.clear();
+            adapter.addAll(photoList);
+            adapter.notifyDataSetChanged();
+
+            TextView tvNoPhotos = findViewById(R.id.tvNoPhotos);
+            if (photoList.isEmpty()) {
+                tvNoPhotos.setVisibility(View.VISIBLE);
+                listViewPhotos.setVisibility(View.GONE);
+            } else {
+                tvNoPhotos.setVisibility(View.GONE);
+                listViewPhotos.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }
